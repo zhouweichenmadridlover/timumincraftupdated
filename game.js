@@ -123,7 +123,31 @@ const itemInfo = {
   Feather: { icon: "🪶", color: 0xf3f4f6 },
   Leather: { icon: "🟫", color: 0x9c6843 },
   Wool: { icon: "⬜", color: 0xe8e8e8 },
-  RawMeat: { icon: "🥩", color: 0xb94f46 }
+  RawMeat: { icon: "🥩", color: 0xb94f46 },
+
+  Grass: { icon: "🟩", color: 0x68ad52 },
+  Wood: { icon: "🪵", color: 0x90613b },
+  Stone: { icon: "🪨", color: 0x858c9a },
+  "Crafting Table": { icon: "🛠️", color: 0x9b653b },
+
+  ironOre: { icon: "⛏️", color: 0xb5a49a },
+  goldOre: { icon: "🟨", color: 0xe8c547 },
+  diamondOre: { icon: "💎", color: 0x48e0d0 },
+
+  "Iron Ingot": { icon: "🔩", color: 0xbfc5cc },
+  "Gold Ingot": { icon: "🟡", color: 0xffd447 },
+  "Diamond": { icon: "💎", color: 0x48e0d0 },
+
+  "Iron Pickaxe": { icon: "⛏️", color: 0xbfc5cc },
+  "Gold Pickaxe": { icon: "⛏️", color: 0xffd447 },
+  "Diamond Pickaxe": { icon: "⛏️", color: 0x48e0d0 },
+
+  "Iron Sword": { icon: "⚔️", color: 0xbfc5cc },
+  "Gold Sword": { icon: "⚔️", color: 0xffd447 },
+  "Diamond Sword": { icon: "⚔️", color: 0x48e0d0 },
+
+  Bow: { icon: "🏹", color: 0x90613b },
+  Arrow: { icon: "➶", color: 0xbfc5cc }
 };
 
 const mobColors = {
@@ -138,8 +162,91 @@ const mobColors = {
   Sheep: 0xe9e9e9,
   Chicken: 0xfff2dc,
   Enderman: 0x30204c,
-  Dragon: 0x32254e
+  Dragon: 0x32254e  
+  ironOre: 0xb5a49a,
+  goldOre: 0xe8c547,
+  diamondOre: 0x48e0d0,
+  craftingTable: 0x9b653b,
 };
+
+const recipes = [
+  {
+    name: "Crafting Table",
+    icon: "🛠️",
+    ingredients: { Wood: 4 },
+    result: { name: "Crafting Table", count: 1 }
+  },
+  {
+    name: "Iron Ingot",
+    icon: "🔩",
+    ingredients: { ironOre: 2 },
+    result: { name: "Iron Ingot", count: 1 },
+    needsTable: true
+  },
+  {
+    name: "Gold Ingot",
+    icon: "🟡",
+    ingredients: { goldOre: 2 },
+    result: { name: "Gold Ingot", count: 1 },
+    needsTable: true
+  },
+  {
+    name: "Iron Pickaxe",
+    icon: "⛏️",
+    ingredients: { "Iron Ingot": 3, Wood: 2 },
+    result: { name: "Iron Pickaxe", count: 1 },
+    needsTable: true
+  },
+  {
+    name: "Gold Pickaxe",
+    icon: "⛏️",
+    ingredients: { "Gold Ingot": 3, Wood: 2 },
+    result: { name: "Gold Pickaxe", count: 1 },
+    needsTable: true
+  },
+  {
+    name: "Diamond Pickaxe",
+    icon: "💎",
+    ingredients: { diamondOre: 3, Wood: 2 },
+    result: { name: "Diamond Pickaxe", count: 1 },
+    needsTable: true
+  },
+  {
+    name: "Iron Sword",
+    icon: "⚔️",
+    ingredients: { "Iron Ingot": 2, Wood: 1 },
+    result: { name: "Iron Sword", count: 1 },
+    needsTable: true
+  },
+  {
+    name: "Gold Sword",
+    icon: "⚔️",
+    ingredients: { "Gold Ingot": 2, Wood: 1 },
+    result: { name: "Gold Sword", count: 1 },
+    needsTable: true
+  },
+  {
+    name: "Diamond Sword",
+    icon: "🗡️",
+    ingredients: { diamondOre: 2, Wood: 1 },
+    result: { name: "Diamond Sword", count: 1 },
+    needsTable: true
+  },
+  {
+    name: "Bow",
+    icon: "🏹",
+    ingredients: { Wood: 3, Feather: 1 },
+    result: { name: "Bow", count: 1 },
+    needsTable: true
+  },
+  {
+    name: "Arrows x4",
+    icon: "➶",
+    ingredients: { Wood: 1, Feather: 1, Stone: 1 },
+    result: { name: "Arrow", count: 4 },
+    needsTable: true
+  }
+];
 
 const cubeGeometry = new THREE.BoxGeometry(1, 1, 1);
 
