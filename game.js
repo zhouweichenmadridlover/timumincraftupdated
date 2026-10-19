@@ -958,7 +958,15 @@ function addToInventory(kind, count = 1) {
       name: kind,
       icon: info.icon,
       count: 0,
-      type: info.heal ? "food" : "material",
+      type: info.heal ? "food" :
+  (["Grass", "Wood", "Stone", "Crafting Table"].includes(kind)
+    ? "block"
+    : (["Sword", "Iron Sword", "Gold Sword", "Diamond Sword",
+        "Bow", "Iron Pickaxe", "Gold Pickaxe", "Diamond Pickaxe"]
+        .includes(kind)
+      ? "weapon"
+      : "material")),
+
       heal: info.heal || 0
     };
     inventory.push(slot);
