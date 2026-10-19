@@ -83,10 +83,10 @@ const colors = {
   endstone: 0xc9c18b,
   obsidian: 0x32254e,
   brick: 0xa95345
-  ironOre: 0xb5a49a,
-  goldOre: 0xe8c547,
-  diamondOre: 0x48e0d0,
-  craftingTable: 0x9b653b,
+  ironOre: 0x9a9a9a,
+  goldOre: 0xffd700,
+  diamondOre: 0x35e5d0,
+  craftingTable: 0x9b633d,
 };
 
 const worlds = {
@@ -127,102 +127,8 @@ const itemInfo = {
   Feather: { icon: "🪶", color: 0xf3f4f6 },
   Leather: { icon: "🟫", color: 0x9c6843 },
   Wool: { icon: "⬜", color: 0xe8e8e8 },
-  RawMeat: { icon: "🥩", color: 0xb94f46 },
-
-  Grass: { icon: "🟩", color: 0x68ad52 },
-  Wood: { icon: "🪵", color: 0x90613b },
-  Stone: { icon: "🪨", color: 0x858c9a },
-  "Crafting Table": { icon: "🛠️", color: 0x9b653b },
-
-  ironOre: { icon: "⛏️", color: 0xb5a49a },
-  goldOre: { icon: "🟨", color: 0xe8c547 },
-  diamondOre: { icon: "💎", color: 0x48e0d0 },
-
-  "Iron Ingot": { icon: "🔩", color: 0xbfc5cc },
-  "Gold Ingot": { icon: "🟡", color: 0xffd447 },
-  "Diamond": { icon: "💎", color: 0x48e0d0 },
-
-  "Iron Pickaxe": { icon: "⛏️", color: 0xbfc5cc },
-  "Gold Pickaxe": { icon: "⛏️", color: 0xffd447 },
-  "Diamond Pickaxe": { icon: "⛏️", color: 0x48e0d0 },
-
-  "Iron Sword": { icon: "⚔️", color: 0xbfc5cc },
-  "Gold Sword": { icon: "⚔️", color: 0xffd447 },
-  "Diamond Sword": { icon: "⚔️", color: 0x48e0d0 },
-
-  Bow: { icon: "🏹", color: 0x90613b },
-  Arrow: { icon: "➶", color: 0xbfc5cc }
+  RawMeat: { icon: "🥩", color: 0xb94f46 }
 };
-
-
-const recipes = [
-  {
-    result: "Crafting Table",
-    amount: 1,
-    ingredients: { Wood: 4 },
-    needsTable: false
-  },
-  {
-    result: "Iron Ingot",
-    amount: 1,
-    ingredients: { ironOre: 2 },
-    needsTable: true
-  },
-  {
-    result: "Gold Ingot",
-    amount: 1,
-    ingredients: { goldOre: 2 },
-    needsTable: true
-  },
-  {
-    result: "Iron Pickaxe",
-    amount: 1,
-    ingredients: { "Iron Ingot": 3, Wood: 2 },
-    needsTable: true
-  },
-  {
-    result: "Gold Pickaxe",
-    amount: 1,
-    ingredients: { "Gold Ingot": 3, Wood: 2 },
-    needsTable: true
-  },
-  {
-    result: "Diamond Pickaxe",
-    amount: 1,
-    ingredients: { Diamond: 3, Wood: 2 },
-    needsTable: true
-  },
-  {
-    result: "Iron Sword",
-    amount: 1,
-    ingredients: { "Iron Ingot": 2, Wood: 1 },
-    needsTable: true
-  },
-  {
-    result: "Gold Sword",
-    amount: 1,
-    ingredients: { "Gold Ingot": 2, Wood: 1 },
-    needsTable: true
-  },
-  {
-    result: "Diamond Sword",
-    amount: 1,
-    ingredients: { Diamond: 2, Wood: 1 },
-    needsTable: true
-  },
-  {
-    result: "Bow",
-    amount: 1,
-    ingredients: { Wood: 3, Feather: 1 },
-    needsTable: true
-  },
-  {
-    result: "Arrow",
-    amount: 4,
-    ingredients: { Wood: 1, Feather: 1, Stone: 1 },
-    needsTable: true
-  }
-];
 
 const mobColors = {
   Zombie: 0x438b60,
@@ -236,87 +142,8 @@ const mobColors = {
   Sheep: 0xe9e9e9,
   Chicken: 0xfff2dc,
   Enderman: 0x30204c,
-  Dragon: 0x32254e  
+  Dragon: 0x32254e
 };
-
-const recipes = [
-  {
-    name: "Crafting Table",
-    icon: "🛠️",
-    ingredients: { Wood: 4 },
-    result: { name: "Crafting Table", count: 1 }
-  },
-  {
-    name: "Iron Ingot",
-    icon: "🔩",
-    ingredients: { ironOre: 2 },
-    result: { name: "Iron Ingot", count: 1 },
-    needsTable: true
-  },
-  {
-    name: "Gold Ingot",
-    icon: "🟡",
-    ingredients: { goldOre: 2 },
-    result: { name: "Gold Ingot", count: 1 },
-    needsTable: true
-  },
-  {
-    name: "Iron Pickaxe",
-    icon: "⛏️",
-    ingredients: { "Iron Ingot": 3, Wood: 2 },
-    result: { name: "Iron Pickaxe", count: 1 },
-    needsTable: true
-  },
-  {
-    name: "Gold Pickaxe",
-    icon: "⛏️",
-    ingredients: { "Gold Ingot": 3, Wood: 2 },
-    result: { name: "Gold Pickaxe", count: 1 },
-    needsTable: true
-  },
-  {
-    name: "Diamond Pickaxe",
-    icon: "💎",
-    ingredients: { diamondOre: 3, Wood: 2 },
-    result: { name: "Diamond Pickaxe", count: 1 },
-    needsTable: true
-  },
-  {
-    name: "Iron Sword",
-    icon: "⚔️",
-    ingredients: { "Iron Ingot": 2, Wood: 1 },
-    result: { name: "Iron Sword", count: 1 },
-    needsTable: true
-  },
-  {
-    name: "Gold Sword",
-    icon: "⚔️",
-    ingredients: { "Gold Ingot": 2, Wood: 1 },
-    result: { name: "Gold Sword", count: 1 },
-    needsTable: true
-  },
-  {
-    name: "Diamond Sword",
-    icon: "🗡️",
-    ingredients: { diamondOre: 2, Wood: 1 },
-    result: { name: "Diamond Sword", count: 1 },
-    needsTable: true
-  },
-  {
-    name: "Bow",
-    icon: "🏹",
-    ingredients: { Wood: 3, Feather: 1 },
-    result: { name: "Bow", count: 1 },
-    needsTable: true
-  },
-  {
-    name: "Arrows x4",
-    icon: "➶",
-    ingredients: { Wood: 1, Feather: 1, Stone: 1 },
-    result: { name: "Arrow", count: 4 },
-    needsTable: true
-  }
-];
 
 const cubeGeometry = new THREE.BoxGeometry(1, 1, 1);
 
@@ -363,45 +190,37 @@ function addBlock(x, y, z, kind, unbreakable = false) {
   return block;
 }
 
-
 function generateOres() {
-  const oreTypes = [
-    { kind: "ironOre", count: 18 },
-    { kind: "goldOre", count: 10 },
-    { kind: "diamondOre", count: 5 }
-  ];
+  const candidates = blocks.filter(block =>
+    block.userData.kind === "grass" &&
+    Math.abs(block.position.x) > 5 &&
+    Math.abs(block.position.z) > 5 &&
+    Math.abs(block.position.x) < 15 &&
+    Math.abs(block.position.z) < 15
+  );
 
-  for (const ore of oreTypes) {
-    let placed = 0;
-    let attempts = 0;
+  // Shuffle the possible locations.
+  candidates.sort(() => Math.random() - 0.5);
 
-    while (placed < ore.count && attempts < ore.count * 20) {
-      attempts++;
+  const chosen = candidates.slice(0, 30);
 
-      const x = Math.floor(Math.random() * 35) - 17;
-      const z = Math.floor(Math.random() * 35) - 17;
-      const y = Math.floor(Math.random() * 3) - 2;
+  chosen.forEach((oldBlock, index) => {
+    const x = oldBlock.position.x;
+    const y = oldBlock.position.y;
+    const z = oldBlock.position.z;
 
-      const existingBlock = blocks.find(block =>
-        block.position.x === x &&
-        block.position.y === y &&
-        block.position.z === z
-      );
+    scene.remove(oldBlock);
+    blocks = blocks.filter(block => block !== oldBlock);
 
-      if (!existingBlock || existingBlock.userData.kind !== "stone") {
-        continue;
-      }
+    const kind = index < 15
+      ? "ironOre"
+      : index < 25
+        ? "goldOre"
+        : "diamondOre";
 
-      const index = blocks.indexOf(existingBlock);
-      scene.remove(existingBlock);
-      blocks.splice(index, 1);
-
-      addBlock(x, y, z, ore.kind);
-      placed++;
-    }
-  }
+    addBlock(x, y, z, kind);
+  });
 }
-
 
 function clearWorld() {
   for (const object of [
@@ -742,7 +561,6 @@ function generateWorld(name) {
       }
     }
 
-    
     generateOres();
 
     createTree(-11, -2);
@@ -966,7 +784,6 @@ function addToInventory(kind, count = 1) {
         .includes(kind)
       ? "weapon"
       : "material")),
-
       heal: info.heal || 0
     };
     inventory.push(slot);
@@ -975,7 +792,6 @@ function addToInventory(kind, count = 1) {
   slot.count += count;
   updateHUD();
 }
-
 
 function hasCraftingTableNearby() {
   return blocks.some(block =>
@@ -1049,7 +865,6 @@ function toggleCrafting() {
     renderCraftingRecipes();
   }
 }
-
 
 function collectItems() {
   for (const item of [...items]) {
