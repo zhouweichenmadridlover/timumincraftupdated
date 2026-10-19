@@ -742,6 +742,9 @@ function generateWorld(name) {
       }
     }
 
+    
+    generateOres();
+
     createTree(-11, -2);
     createTree(-14, 8);
     createTree(13, 9);
