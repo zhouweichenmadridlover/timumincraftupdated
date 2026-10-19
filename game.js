@@ -976,6 +976,81 @@ function addToInventory(kind, count = 1) {
   updateHUD();
 }
 
+
+function hasCraftingTableNearby() {
+  return blocks.some(block =>
+    block.userData.kind === "craftingTable" &&
+    block.position.distanceTo(player.position) < 5
+  );
+}
+
+function craftRecipe(recipe) {
+  if (recipe.needsTable && !hasCraftingTableNearby()) {
+    showToast("You need a nearby Crafting Table!");
+    return;
+  }
+
+  for (const [item, amount] of Object.entries(recipe.ingredients)) {
+    const slot = inventory.find(entry =>
+      entry.name === item && entry.count >= amount
+    );
+
+    if (!slot) {
+      showToast(`You need ${amount} ${item}!`);
+      return;
+    }
+  }
+
+  for (const [item, amount] of Object.entries(recipe.ingredients)) {
+    const slot = inventory.find(entry => entry.name === item);
+    slot.count -= amount;
+  }
+
+  addToInventory(recipe.result, recipe.amount || 1);
+  showToast(`Crafted ${recipe.result}!`);
+  renderCraftingRecipes();
+  updateHUD();
+}
+
+function renderCraftingRecipes() {
+  const container = $("crafting-recipes");
+  if (!container) return;
+
+  container.innerHTML = "";
+
+  for (const recipe of recipes) {
+    const row = document.createElement("div");
+    row.className = "craft-recipe";
+
+    const ingredients = Object.entries(recipe.ingredients)
+      .map(([item, amount]) => `${item} ×${amount}`)
+      .join(", ");
+
+    const description = document.createElement("span");
+    description.textContent =
+      `${recipe.result} — ${ingredients}`;
+
+    const button = document.createElement("button");
+    button.textContent = "Craft";
+    button.addEventListener("click", () => craftRecipe(recipe));
+
+    row.append(description, button);
+    container.appendChild(row);
+  }
+}
+
+function toggleCrafting() {
+  const panel = $("crafting-panel");
+  if (!panel) return;
+
+  panel.classList.toggle("hidden");
+
+  if (!panel.classList.contains("hidden")) {
+    renderCraftingRecipes();
+  }
+}
+
+
 function collectItems() {
   for (const item of [...items]) {
     if (item.position.distanceTo(player.position) < 1.5) {
