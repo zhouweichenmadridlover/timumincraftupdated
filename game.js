@@ -83,6 +83,10 @@ const colors = {
   endstone: 0xc9c18b,
   obsidian: 0x32254e,
   brick: 0xa95345
+  ironOre: 0xb5a49a,
+  goldOre: 0xe8c547,
+  diamondOre: 0x48e0d0,
+  craftingTable: 0x9b653b,
 };
 
 const worlds = {
@@ -150,6 +154,76 @@ const itemInfo = {
   Arrow: { icon: "➶", color: 0xbfc5cc }
 };
 
+
+const recipes = [
+  {
+    result: "Crafting Table",
+    amount: 1,
+    ingredients: { Wood: 4 },
+    needsTable: false
+  },
+  {
+    result: "Iron Ingot",
+    amount: 1,
+    ingredients: { ironOre: 2 },
+    needsTable: true
+  },
+  {
+    result: "Gold Ingot",
+    amount: 1,
+    ingredients: { goldOre: 2 },
+    needsTable: true
+  },
+  {
+    result: "Iron Pickaxe",
+    amount: 1,
+    ingredients: { "Iron Ingot": 3, Wood: 2 },
+    needsTable: true
+  },
+  {
+    result: "Gold Pickaxe",
+    amount: 1,
+    ingredients: { "Gold Ingot": 3, Wood: 2 },
+    needsTable: true
+  },
+  {
+    result: "Diamond Pickaxe",
+    amount: 1,
+    ingredients: { Diamond: 3, Wood: 2 },
+    needsTable: true
+  },
+  {
+    result: "Iron Sword",
+    amount: 1,
+    ingredients: { "Iron Ingot": 2, Wood: 1 },
+    needsTable: true
+  },
+  {
+    result: "Gold Sword",
+    amount: 1,
+    ingredients: { "Gold Ingot": 2, Wood: 1 },
+    needsTable: true
+  },
+  {
+    result: "Diamond Sword",
+    amount: 1,
+    ingredients: { Diamond: 2, Wood: 1 },
+    needsTable: true
+  },
+  {
+    result: "Bow",
+    amount: 1,
+    ingredients: { Wood: 3, Feather: 1 },
+    needsTable: true
+  },
+  {
+    result: "Arrow",
+    amount: 4,
+    ingredients: { Wood: 1, Feather: 1, Stone: 1 },
+    needsTable: true
+  }
+];
+
 const mobColors = {
   Zombie: 0x438b60,
   Creeper: 0x54d35c,
@@ -163,10 +237,6 @@ const mobColors = {
   Chicken: 0xfff2dc,
   Enderman: 0x30204c,
   Dragon: 0x32254e  
-  ironOre: 0xb5a49a,
-  goldOre: 0xe8c547,
-  diamondOre: 0x48e0d0,
-  craftingTable: 0x9b653b,
 };
 
 const recipes = [
@@ -292,6 +362,46 @@ function addBlock(x, y, z, kind, unbreakable = false) {
   blocks.push(block);
   return block;
 }
+
+
+function generateOres() {
+  const oreTypes = [
+    { kind: "ironOre", count: 18 },
+    { kind: "goldOre", count: 10 },
+    { kind: "diamondOre", count: 5 }
+  ];
+
+  for (const ore of oreTypes) {
+    let placed = 0;
+    let attempts = 0;
+
+    while (placed < ore.count && attempts < ore.count * 20) {
+      attempts++;
+
+      const x = Math.floor(Math.random() * 35) - 17;
+      const z = Math.floor(Math.random() * 35) - 17;
+      const y = Math.floor(Math.random() * 3) - 2;
+
+      const existingBlock = blocks.find(block =>
+        block.position.x === x &&
+        block.position.y === y &&
+        block.position.z === z
+      );
+
+      if (!existingBlock || existingBlock.userData.kind !== "stone") {
+        continue;
+      }
+
+      const index = blocks.indexOf(existingBlock);
+      scene.remove(existingBlock);
+      blocks.splice(index, 1);
+
+      addBlock(x, y, z, ore.kind);
+      placed++;
+    }
+  }
+}
+
 
 function clearWorld() {
   for (const object of [
